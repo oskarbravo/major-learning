@@ -3,194 +3,84 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Major System Learning</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 <style>
 
 .letters{
-	font-size: 6em;
+	font-size: 4em;
+	text-align: center;
 }
 	
 .number{
-	font-size: 6em;
+	font-size: 4em;
+	text-align: center;
+}
+
+.count-test{
+	font-size: 2em;
 }
 
 </style>
 </head>
 <body>
-	<h1>Learn the Major System</h1>
 
-	<p>Randomly Selected</p>
+	<nav class="navbar navbar-light bg-light mb-3">
+		<span class="navbar-brand mb-0 h1">
+			<i class="fas fa-bolt"></i> Learn the Major System
+		</span>
+	</nav>
 
 	<div class="container">
 
 		<div class="row">
 			<div class="col-sm">
-				<a href="#" class="btn btn-primary btn-block run-btn">Run Major</a>
+				<a href="#" class="btn btn-success btn-block mb-3 timer-btn">
+					<i class="fas fa-play-circle"></i> Start Timer
+				</a>
 			</div>		
-		</div>
+		</div><!-- /row -->
+
+		<!-- Countdown goes here -->
 
 		<div class="row">
-		<div class="col-sm">
-			<div class="card">
-			  <div class="card-body">
-			    <p class="number">0</p>
-			  </div>
+			<div class="col-sm">
+				<div class="card">
+				  <div class="card-body">
+				    <p class="number">6</p>
+				  </div>
+				</div>
+				<a href="#" class="btn btn-info btn-block mb-5 num-btn">
+					<i class="fas fa-eye-slash"></i> Hide Number
+				</a>
 			</div>
-			<a href="#" class="btn btn-info btn-block num-btn">Hide Number</a>  
-		</div>
 
-	    <div class="col-sm">
-	    	<div class="card">
-			  <div class="card-body">
-			    <p class="letters">S, Z</p>
-			  </div>
+			<div class="col-sm">
+				<div class="card">
+				  <div class="card-body">
+				    <p class="letters">CH, SH, J</p>
+				  </div>
+				</div>
+				<a href="#" class="btn btn-info btn-block mb-5 let-btn">
+					<i class="fas fa-eye-slash"></i> Hide Letters
+				</a>        
 			</div>
-			<a href="#" class="btn btn-info btn-block let-btn">Hide Letters</a>        
-	    </div>
-	  </div>
-	</div>
+		</div><!-- /row -->
+
+		<div class="row">
+			<div class="col-sm">
+				<a href="#" class="btn btn-primary btn-block run-btn">
+					<i class="fas fa-redo-alt"></i> Run Major
+				</a>
+			</div>		
+		</div><!-- /row -->
+
+	</div><!-- /container -->
 
 	
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<script>
-
-// Set Vars
-const number = document.querySelector('.number');
-const letters = document.querySelector('.letters');
-const runBtn = document.querySelector('.run-btn');
-const numBtn = document.querySelector('.num-btn');
-const letBtn = document.querySelector('.let-btn');
-let numVis = true;
-let letVis = true;
-
-// Listen For Clicks
-runBtn.addEventListener('click', createMajor);
-numBtn.addEventListener('click', toggleNum);
-letBtn.addEventListener('click', toggleLet);
-
-// Calculate Letters
-function calculateLetters(randomNum){
-	let letter;
-	switch (randomNum) {
-		case 0:
-			letter = "S, Z";
-			break;
-		case 1:
-			letter = "T, D";
-			break;
-		case 2:
-			letter = "N";
-			break;
-		case 3:
-			letter = "M";
-			break;
-		case 4:
-			letter = "R";
-			break;
-		case 5:
-			letter = "L";
-			break;
-		case  6:
-			letter = "CH, SH, J";
-			break;
-		case  7:
-			letter = "K, G";
-			break;
-		case  8:
-			letter = "F, V";
-			break;
-		case  9:
-			letter = "P, B";
-			break;
-	}
-
-	// return letter for 0-9
-	return letter;
-}
-
-function createMajor(e){
-
-	// Prevent Link Action
-	e.preventDefault();
-
-	// Random Choice 0 - 9
-	const randomNum = Math.floor(Math.random()*10);
-
-	// Inject the values into DOM
-	number.innerHTML = randomNum;
-	letters.innerHTML = calculateLetters(randomNum);
-}
-
-// Toggle the numbers
-function toggleNum(e) {
-
-	e.preventDefault();
-
-	if (numVis === true) {
-
-		numVis = false;
-
-		// Hide From DOM
-		number.classList.remove('visible');
-		number.classList.add('invisible');
-
-		// HTML Button Classes
-		numBtn.innerHTML = 'Show Numbers';
-		numBtn.classList.remove('btn-primary');
-		numBtn.classList.add('btn-light');
-
-	} else {
-
-		numVis = true;
-
-		// Show In DOM
-		number.classList.remove('invisible');
-		number.classList.add('visible');
-
-		// HTML Button Classes
-		numBtn.innerHTML = 'Hide Numbers';
-		numBtn.classList.remove('btn-light');
-		numBtn.classList.add('btn-primary');
-	}
-}
-
-function toggleLet(e) {
-
-	e.preventDefault();
-
-	if (letVis === true) {
-
-		letVis = false;
-
-		// Hide From DOM
-		letters.classList.remove('visible');
-		letters.classList.add('invisible');
-
-		// HTML Button Classes
-		letBtn.innerHTML = 'Show Numbers';
-		letBtn.classList.remove('btn-primary');
-		letBtn.classList.add('btn-light');
-
-	} else {
-
-		letVis = true;
-
-		// Show In DOM
-		letters.classList.remove('invisible');
-		letters.classList.add('visible');
-
-		// HTML Button Classes
-		letBtn.innerHTML = 'Hide Numbers';
-		letBtn.classList.remove('btn-light');
-		letBtn.classList.add('btn-primary');
-	}
-
-} 
-
-</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="app.js"></script>
 </body>
 </html>

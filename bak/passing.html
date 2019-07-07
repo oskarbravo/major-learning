@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Testing</title>
+</head>
+<body>
+	
+	<p id="p1">Blah Blah</p>
+
+	<p id="p2">Blah Blah</p>
+
+<button onclick="numOne()">Click Me</button>
+
+<button onclick="numTwo()">Click Me</button>
+
+<script>
+
+var name = 'Sean';
+
+var paraOne = document.getElementById('p1');
+
+var paraTwo = document.getElementById('p2');
+
+
+function numOne(){
+	name = 'Ozzy';
+	// var 
+	paraOne.innerHTML = name;
+	return name;
+}
+
+
+function numTwo(){
+	// name = 'James';
+	name = numOne();
+	paraTwo.innerHTML = name;
+}
+
+
+console.log(name);
+
+
+
+</script>
+</body>
+</html>

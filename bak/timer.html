@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Timer Testing</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+</head>
+<body>
+	<p class="timer">Timer Is On</p>
+
+	<p>The count is <span class="numbah">3</span></p>
+
+	<p><a href="#" class="btn btn-primary timer-btn">Run Timer</a></p>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+	
+const timer = document.querySelector('.timer');
+let numbah = document.querySelector('.numbah');
+const timerBtn = document.querySelector('.timer-btn');
+timerBtn.addEventListener('click', runTimer);
+
+let globalCount = 4;
+
+function runTimer(e){
+
+	console.log('clicked dummy');
+
+	// let timerInt = setInterval(newMajor, 3000);
+
+	let count = setInterval(getCount, 1000);
+
+	e.preventDefault();
+}
+
+function startCountdown(){
+	console.log('startCountdown fired');
+}
+
+function stopTimer(){
+	stopInterval(timerInt);
+}
+
+function newMajor(){
+	
+	globalCount = 4;
+	
+	console.log('New Major Called');
+	console.log('Counter is ' + globalCount);
+
+	
+}
+
+function getCount(){
+
+	if(globalCount === 1){
+
+		newMajor();
+		globalCount = 3;
+
+	} else {
+
+		globalCount--;
+
+	}
+
+	// console.log(globalCount);
+	numbah.innerHTML = globalCount;
+}
+
+
+console.log(timer);
+console.log(numbah);
+console.log(timerBtn);
+
+</script>
+</body>
+</html>
